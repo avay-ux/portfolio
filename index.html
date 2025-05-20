@@ -5,36 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Avay Verma | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rubik:wght@300;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <img src="assets/profile.jpg" alt="Profile Picture" class="profile-img" />
-      <h1>Avay Verma</h1>
-      <p>Web Developer | Student at The British College</p>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo">Avay Verma</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="hero-overlay">
+      <h1>I’m <span class="typing-text"></span></h1>
+      <p>Final Year CS Student | Full-Stack Developer</p>
+      <a href="assets/resume.pdf" class="btn" download>Download CV</a>
     </div>
   </header>
 
-  <section class="about">
+  <section class="about reveal" id="about">
     <h2>About Me</h2>
-    <p>I am a final-year student passionate about web development, currently exploring WordPress and full-stack development. I have experience working on e-commerce projects using HTML, CSS, JS, PHP, and SQL.</p>
+    <p>I’m a final-year CS student passionate about blending clean design with backend logic. I love building smart, scalable applications using HTML, CSS, JS, Python, and more.</p>
   </section>
 
-  <section class="projects">
+  <section class="projects reveal" id="projects">
     <h2>Projects</h2>
-    <ul>
-      <li><strong>E-commerce Website</strong> – Built with HTML, CSS, JS, PHP & SQL</li>
-      <li><strong>Graphic Design</strong> – Designed posters for Hult Prize events</li>
-    </ul>
+    <div class="project-grid">
+      <div class="card">
+        <h3>E-commerce Website</h3>
+        <p>Built with HTML, CSS, JS, PHP & SQL. Secure login, cart, and checkout included.</p>
+      </div>
+      <div class="card">
+        <h3>Graphic Design</h3>
+        <p>Created media designs and posters for the Hult Prize using Adobe Suite tools.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="contact">
-    <h2>Contact</h2>
+  <section class="resume reveal" id="resume">
+    <h2>Resume Snapshot</h2>
+    <p>Download my full resume above or explore my skills, projects, and academic journey.</p>
+  </section>
+
+  <section class="blog reveal" id="blog">
+    <h2>Blog (Coming Soon)</h2>
+    <p>I’ll share tutorials, case studies, and dev insights here soon.</p>
+  </section>
+
+  <section class="contact reveal" id="contact">
+    <h2>Contact Me</h2>
     <p>Email: <a href="mailto:avayverma71@gmail.com">avayverma71@gmail.com</a></p>
   </section>
 
   <footer>
-    <p>&copy; 2025 Avay Verma</p>
+    <p>&copy; 2025 Avay Verma | All Rights Reserved</p>
   </footer>
+
+  <script>
+    // Typing animation
+    const words = ["Avay Verma", "a Developer", "a Designer", "a Problem Solver"];
+    let i = 0, j = 0, currentWord = "", isDeleting = false;
+    const textEl = document.querySelector(".typing-text");
+
+    function type() {
+      if (i < words.length) {
+        if (!isDeleting && j <= words[i].length) {
+          currentWord = words[i].substring(0, j++);
+        } else if (isDeleting && j >= 0) {
+          currentWord = words[i].substring(0, j--);
+        }
+
+        textEl.textContent = currentWord;
+
+        if (!isDeleting && j === words[i].length) {
+          isDeleting = true;
+          setTimeout(type, 1200);
+        } else if (isDeleting && j === 0) {
+          isDeleting = false;
+          i = (i + 1) % words.length;
+        }
+
+        setTimeout(type, isDeleting ? 80 : 120);
+      }
+    }
+    type();
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll(".reveal");
+    window.addEventListener("scroll", () => {
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const revealTop = reveals[i].getBoundingClientRect().top;
+        if (revealTop < windowHeight - 100) {
+          reveals[i].classList.add("active");
+        }
+      }
+    });
+  </script>
 </body>
 </html>
