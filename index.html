@@ -5,108 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Avay Verma | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rubik:wght@300;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="#home" class="logo">Avay Verma</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
 
-  <header class="hero" id="home">
-    <div class="hero-overlay">
-      <h1>I’m <span class="typing-text"></span></h1>
-      <p>Final Year CS Student | Full-Stack Developer</p>
-      <a href="assets/resume.pdf" class="btn" download>Download CV</a>
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Hi, I'm Avay Verma</h1>
+      <p>I build websites and solve problems using code.</p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+      </div>
     </div>
   </header>
 
-  <section class="about reveal" id="about">
+  <section class="about" id="about">
     <h2>About Me</h2>
-    <p>I’m a final-year CS student passionate about blending clean design with backend logic. I love building smart, scalable applications using HTML, CSS, JS, Python, and more.</p>
+    <p>I’m a final-year CS student at The British College passionate about front-end and full-stack development. My goal is to build user-friendly and smart interfaces that blend style with function. I love learning new tools and frameworks that improve how we interact with technology.</p>
   </section>
 
-  <section class="projects reveal" id="projects">
+  <section class="projects" id="projects">
     <h2>Projects</h2>
     <div class="project-grid">
       <div class="card">
+        <img src="assets/project1.jpg" alt="Project 1">
         <h3>E-commerce Website</h3>
-        <p>Built with HTML, CSS, JS, PHP & SQL. Secure login, cart, and checkout included.</p>
+        <p>Created using HTML, CSS, JS, PHP & MySQL. Supports login, cart, and payment.</p>
       </div>
       <div class="card">
+        <img src="assets/project2.jpg" alt="Project 2">
         <h3>Graphic Design</h3>
-        <p>Created media designs and posters for the Hult Prize using Adobe Suite tools.</p>
+        <p>Designed digital posters for Hult Prize using Adobe Photoshop and Illustrator.</p>
       </div>
     </div>
   </section>
 
-  <section class="resume reveal" id="resume">
-    <h2>Resume Snapshot</h2>
-    <p>Download my full resume above or explore my skills, projects, and academic journey.</p>
-  </section>
-
-  <section class="blog reveal" id="blog">
-    <h2>Blog (Coming Soon)</h2>
-    <p>I’ll share tutorials, case studies, and dev insights here soon.</p>
-  </section>
-
-  <section class="contact reveal" id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:avayverma71@gmail.com">avayverma71@gmail.com</a></p>
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <p>Want to work together or just say hello?</p>
+    <p>Email me at: <a href="mailto:avayverma71@gmail.com">avayverma71@gmail.com</a></p>
   </section>
 
   <footer>
-    <p>&copy; 2025 Avay Verma | All Rights Reserved</p>
+    <p>&copy; 2025 Avay Verma. All rights reserved.</p>
   </footer>
 
-  <script>
-    // Typing animation
-    const words = ["Avay Verma", "a Developer", "a Designer", "a Problem Solver"];
-    let i = 0, j = 0, currentWord = "", isDeleting = false;
-    const textEl = document.querySelector(".typing-text");
-
-    function type() {
-      if (i < words.length) {
-        if (!isDeleting && j <= words[i].length) {
-          currentWord = words[i].substring(0, j++);
-        } else if (isDeleting && j >= 0) {
-          currentWord = words[i].substring(0, j--);
-        }
-
-        textEl.textContent = currentWord;
-
-        if (!isDeleting && j === words[i].length) {
-          isDeleting = true;
-          setTimeout(type, 1200);
-        } else if (isDeleting && j === 0) {
-          isDeleting = false;
-          i = (i + 1) % words.length;
-        }
-
-        setTimeout(type, isDeleting ? 80 : 120);
-      }
-    }
-    type();
-
-    // Reveal on scroll
-    const reveals = document.querySelectorAll(".reveal");
-    window.addEventListener("scroll", () => {
-      for (let i = 0; i < reveals.length; i++) {
-        const windowHeight = window.innerHeight;
-        const revealTop = reveals[i].getBoundingClientRect().top;
-        if (revealTop < windowHeight - 100) {
-          reveals[i].classList.add("active");
-        }
-      }
-    });
-  </script>
 </body>
 </html>
